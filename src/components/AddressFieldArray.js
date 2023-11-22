@@ -2,7 +2,6 @@ import React from 'react'
 import {FieldArray ,Field,ErrorMessage} from "formik"
 function AddressFieldArray({values}) {
   return (
-    
     <FieldArray name="addresses">
     {({ remove, push }) => (
         <div className='mt-3'>
@@ -30,7 +29,6 @@ function AddressFieldArray({values}) {
                             <Field type="text" id={`addresses.${index}.postalCode`} name={`addresses.${index}.postalCode`} />
                             <ErrorMessage name={`addresses.${index}.postalCode`} component="div" className="error-message" />
                         </div>
-
                     </div>
                     <div className="row">
                         <div className='col-md-4'>

@@ -1,49 +1,30 @@
 import React, { useRef, useState } from 'react'
-import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import FormSummaryModal from '../components/FormSummaryModal';
 import { useDispatch } from 'react-redux';
 import { setFormData } from '../redux/formSlice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { v1 as uuidv4 } from "uuid";
 import { Toast } from 'primereact/toast';
 import AddressFieldArray from '../components/AddressFieldArray';
+import { validationSchema } from '../validation';
 
 function PersonalInfoForm() {
     const [formSummary, setFormSummary] = useState(null);
     const [isFormSummaryModalVisible, setFormSummaryModalVisible] = useState(false);
-
+    const navigate = useNavigate()
     const dispatch = useDispatch();
-    const toastRef = useRef()
-
-    // Address validation schema
-    const addressValidationSchema = Yup.object().shape({
-        streetAddress: Yup.string().required('Street Address is required'),
-        city: Yup.string().required('City is required'),
-        state: Yup.string().required('State is required'),
-        postalCode: Yup.string().matches(/^[0-9]{5,}$/, 'Invalid postal code').required('Postal Code is required'),
-        country: Yup.string().required('Country is required'),
-    });
-
-    // Main validation schema
-    const validationSchema = Yup.object().shape({
-        firstName: Yup.string().required('First Name is required'),
-        lastName: Yup.string().required('Last Name is required'),
-        email: Yup.string().email('Invalid email format').required('Email is required'),
-        phoneNumber: Yup.string().matches(/^[0-9]{10}$/, 'Invalid phone number').required('Phone Number is required'),
-        dateOfBirth: Yup.date().required('Date of Birth is required').max((new Date(new Date().setFullYear(new Date().getFullYear() - 18))), 'Must be 18 years or older'),
-        gender: Yup.string().required('Gender is required'),
-        addresses: Yup.array().of(addressValidationSchema).min(1, 'At least one address is required'), // Ensure at least one address
-    });
+    const toastRef = useRef()    
 
     // FORM SUBMISSION 
     const handleSubmit = (values, actions) => {
         actions.setSubmitting(false);
-        setFormSummary(values);
-        setFormSummaryModalVisible(true);
+        // setFormSummary(values); // Currently redirecting to the data table, so there's no need for this at the moment.
+        // setFormSummaryModalVisible(true);
         values._id = uuidv4();
         dispatch(setFormData(values));
         actions.resetForm()
+        navigate('/personal-info-table')
         // Add toast message code
         const message = {
             severity: 'success',
@@ -51,10 +32,7 @@ function PersonalInfoForm() {
             detail: 'Your form data has been submitted successfully.',
         };
         toastRef.current.show(message);
-
     };
-
-
     return (
         <div className='container'>
             <div className="row my-4">
