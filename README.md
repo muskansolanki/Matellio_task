@@ -1,3 +1,13 @@
+
+## Installation
+- Clone the repository: `git clone https://github.com/muskansolanki/Matellio_task.git`
+- Install dependencies: `npm install`
+
+## Usage
+- Run the application: `npm start`
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
