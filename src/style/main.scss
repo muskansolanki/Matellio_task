@@ -1,0 +1,114 @@
+@import './var.scss';
+
+
+// COMMON STYLE
+
+.primary-color{
+    color : $primary-color;
+}
+
+.outline-btn{
+    border : 2px solid $primary-color;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    padding : 4px 15px;
+    background: none;
+    color : $primary-color;
+    font-weight: 500;
+}
+.remove-btn{
+    border : 2px solid #f61515;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    padding : 2px 15px;
+    background: none;
+    color : #f61515;
+    font-weight: 500;
+}
+
+.submit-btn{
+    background: $primary-color;
+    color : $white-color;
+    text-decoration: none;
+    padding:8px 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    border : none
+}
+
+// NAVBAR STYLE
+
+.navbar-top {
+    background-color: $primary-color;
+    color: $white-color;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    .page-title {
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 3px;
+        padding: 10px 0px;
+    }
+}
+.navigation-btn{
+    background: $primary-color;
+    color : $white-color;
+    text-decoration: none;
+    padding:10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+// PAGES STYLE
+.outer-card {
+    background-color: $white-color;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+.registration-img{
+    position: fixed;
+    right: 0;
+}
+.p-datatable-emptymessage>td{
+    text-align: center;
+}
+
+// FORM STYLING
+.error-message{
+    color :#f61515;
+}
+
+.info-form {
+    label {
+        margin-bottom: 5px;
+        display: block;
+        color:#5d5d5d;
+        font-size: 18px;
+        margin-top:5px ;
+    }
+    select,
+    input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+        border-radius: 4px;
+        border:none;
+        outline : 1px solid $off-white-color ;
+    }
+    input:focus{
+        outline :1px solid #4b164c7b!important;
+    }
+}
+.address-wrapper{
+    border : 1px solid $off-white-color;
+    padding : 10px 20px;
+    border-radius: 4px;
+}
+
